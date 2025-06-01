@@ -1,10 +1,9 @@
 .el {
-  height: 100vh;
+  padding: 20px;
+  /* position: relative; */
+
   .bubbleWrapper {
     height: 100%;
-    background-color: lightgrey;
-    padding: 20px;
-    border: 1px solid blue;
     display: flex;
     flex-direction: column;
     gap: 5.4px;
@@ -15,11 +14,29 @@
     flex-direction: row;
     background: #f0f0f0;
     padding: 10px 17px;
-    border-radius: 50px;
-    white-space: nowrap;
-    overflow: hidden;
+    border-radius: 12px;
+    border-bottom-left-radius: 0px ;
+    flex-wrap: wrap;
     width: fit-content;
     font-family: sans-serif;
+    color: black;
   }
 
+  .imageWrapper {
+    width: fit-content;
+    border-radius: 12px;
+    border-bottom-left-radius: 0px;
+    /* overflow: hidden; */
+    img {
+      object-fit: cover;
+      height: 100%;
+      width: 100%;
+      border-radius: 12px;
+      border-bottom-left-radius: 0px;
+    }
+  }
+
+  :global(.Overlay--after-open) {
+      border: 10px solid red;
+  }
 }

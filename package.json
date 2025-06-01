@@ -10,12 +10,14 @@
   },
   "dependencies": {
     "animejs": "^4.0.2",
-    "framer-motion": "^12.12.1",
+    "framer-motion": "^12.15.0",
     "gsap": "^3.13.0",
     "next": "15.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-medium-image-zoom": "^5.2.14",
     "react-modal": "^3.16.3",
+    "sass": "^1.89.1",
     "swiper": "^11.2.8"
   },
   "devDependencies": {

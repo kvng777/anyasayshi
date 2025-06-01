@@ -1,15 +1,11 @@
 "use client";
 
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useMemo } from "react";
 import gsap from "gsap";
 import styles from "./page.module.css";
 import Image from "next/image";
 
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation, Pagination } from 'swiper/modules';
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import MyModal from "@/components/modal";
 
 export default function Home() {
 
@@ -18,12 +14,15 @@ export default function Home() {
   const [isTyping, setIsTyping] = useState(false);
   const [typingDots, setTypingDots] = useState("");
   const [showImages, setShowImages] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+  const [imageIdx, setImageIdx] = useState(-1);
+
   const containerRef = useRef<HTMLDivElement>(null);
   const typingInterval = useRef<NodeJS.Timeout | null>(null);
 
   const anyasDOB = '2025-05-04';
 
-  const getDaysOld = (dob: any) => {
+  const getDaysOld = (dob: string | number | Date) => {
     const today = new Date();
     const birth = new Date(dob);
     const diffTime = today.getTime() - birth.getTime();;
@@ -33,20 +32,14 @@ export default function Home() {
     return diffDays;
   }
 
-  console.log('getDaysOld', getDaysOld(anyasDOB));
-  // const anyasBday = dateToday
-
-  // Animate typing dots
-
-  const messages = [
-    'Hii! 👋',
-    `My name is Anya! As of today I am ${getDaysOld(anyasDOB)} days old lol`,
-    'Just wanted to say hi...',
-    '...but most importantly, thank you!',
-    'I really love the gift that you folks got me!',
-    'Its sweet and cozy!',
-    'Here are some photos of me :)',
-  ];
+  const messages = useMemo(() => [
+    "Hii! 👋 It's me Anya!",
+    `As of today I am ${getDaysOld(anyasDOB)} days old lol`,
+    "Just wanted to give my big love and thanks to you folks for such a lovely gift!",
+    // "...but most importantly, thank you!",
+    "It's nice and cozy, and keeps me suuuper safe!",
+    "Here are some photos of me :)",
+  ], []);
 
   const images = [
     '1.jpeg',
@@ -77,14 +70,14 @@ export default function Home() {
       clearTimeout(showMessageTimeout);
       if (typingInterval.current) clearInterval(typingInterval.current);
     };
-  }, [isTyping, currentIndex]);
+  }, [isTyping, currentIndex, messages]);
 
   // Start typing effect when ready for next message
   useEffect(() => {
     if (currentIndex < messages.length && !isTyping) {
       setIsTyping(true);
     }
-  }, [displayedMessages, currentIndex, isTyping]);
+  }, [displayedMessages, currentIndex, isTyping, messages]);
 
   // Animate new message with GSAP
   useEffect(() => {
@@ -103,7 +96,12 @@ export default function Home() {
         setShowImages(true);
       }
     }
-  }, [displayedMessages]);
+  }, [displayedMessages, messages]);
+
+  const handleImgClick = (idx: number) => {
+    setOpenModal(!openModal);
+    setImageIdx(idx);
+  }
 
   return (
     <div className={styles.el}>
@@ -118,17 +116,25 @@ export default function Home() {
             <p className={styles.typing}>Typing{typingDots}</p>
           </div>
         )}
-        {/* < */}
         {
           showImages && 
           images.map((img, idx) => {
             return (
-              <Image key={idx} src={`/images/${img}`} width={100} height={100} alt='Photos of Anya'/>    
+              <a key={idx} className={styles.imageWrapper} onClick={()=>handleImgClick(idx)}>
+                <Image  src={`/images/${img}`} width={120} height={180} alt='Photos of Anya'  blurDataURL={`/images/${img}`} placeholder="blur"/>    
+              </a>
             )
           })
           
         }
       </div>
+
+      <MyModal 
+        isOpen={openModal}
+        setOpenModal={setOpenModal}
+        imageIdx={imageIdx}
+        images={images}
+      />
     </div>
   );
 }
