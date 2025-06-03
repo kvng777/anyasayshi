@@ -73,6 +73,8 @@ export default function Home() {
   ]
 
   const [avatarLoaded, setAvatarLoaded] = useState(false);
+  const [imagesPreloaded, setImagesPreloaded] = useState(false);
+
 
   useEffect(() => {
     const img = new window.Image();
@@ -80,6 +82,29 @@ export default function Home() {
     img.onload = () => {
       setAvatarLoaded(true);
     };
+  }, []);
+
+  useEffect(() => {
+    const preloadImages = async () => {
+      const promises = thumbnails.map((filename) => {
+        return new Promise<void>((resolve, reject) => {
+          const img = new window.Image();
+          img.src = `/images/thumb/${filename}`;
+          img.onload = () => resolve();
+          img.onerror = () => reject(); // optional: handle errors
+        });
+      });
+
+      try {
+        await Promise.all(promises);
+        setImagesPreloaded(true); // <-- add this state
+      } catch (err) {
+        console.error("Some thumbnail images failed to load", err);
+        setImagesPreloaded(true); // optionally still show them
+      }
+    };
+
+    preloadImages();
   }, []);
 
   useEffect(() => {
@@ -166,13 +191,18 @@ export default function Home() {
               </div>
             </div>
           )}
-          {avatarLoaded && 
+          {avatarLoaded &&
+            imagesPreloaded &&  
             showImages && 
             thumbnails.map((img, idx) => {
               return (
-                <a key={idx} className={styles.imageWrapper} onClick={()=>handleImgClick(idx)}>
-                  <Image  src={`/images/thumb/${img}`} width={120} height={180} alt='Photos of Anya'/>    
-                </a>
+                <div key={idx} className={styles.imageWrapper} >
+                  {renderAvatar()}
+                  <a onClick={()=>handleImgClick(idx)}>
+                    <Image  src={`/images/thumb/${img}`} width={120} height={180} alt='Photos of Anya'/>    
+                  </a>
+                </div>
+                
               )
             })
           }
