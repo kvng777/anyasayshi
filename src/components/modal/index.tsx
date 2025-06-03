@@ -5,10 +5,6 @@ import style from '../modal/modal.module.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Zoom } from 'swiper/modules';
 import 'swiper/css';
-// import IconClose from '@/assets/icons/icon-close.svg';
-
-// import Zoom from 'react-medium-image-zoom'
-// import 'react-medium-image-zoom/dist/styles.css'
 
 Modal.setAppElement('body');
 
@@ -50,7 +46,7 @@ const MyModal: React.FC<IModal> = ({
           return (
             <SwiperSlide key={idx}>
               <div className="swiper-zoom-container">
-                <Image className={style.image} src={`/images/${img}`} height={200} width={280} alt={'Photos of Anya'}/>
+                <Image className={style.image} src={`/images/large/${img}`} height={200} width={280} alt={'Photos of Anya'} quality={100}/>
               </div>
             </SwiperSlide>
           )})

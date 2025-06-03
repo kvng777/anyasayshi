@@ -1,6 +1,18 @@
 .el {
-  padding: 20px;
-  /* position: relative; */
+  .header {
+    border-bottom: 1px solid darkgrey;
+    font-size: 20px;
+    text-align: center;
+    /* height: 50px; */
+    margin: auto 0;
+    padding: 12px 0;
+  }
+
+  .body {
+    padding: 20px;
+    max-width: 768px;
+    /* margin: 0 auto; */
+  }
 
   .bubbleWrapper {
     height: 100%;
@@ -9,17 +21,32 @@
     gap: 5.4px;
   }
 
-  .bubble {
+  .msgWrapper {
     display: flex;
     flex-direction: row;
-    background: #f0f0f0;
-    padding: 10px 17px;
-    border-radius: 12px;
-    border-bottom-left-radius: 0px ;
-    flex-wrap: wrap;
-    width: fit-content;
-    font-family: sans-serif;
-    color: black;
+    gap: 8px;
+    .bubble {
+      font-size: 20px;
+      display: flex;
+      flex-direction: row;
+      background: #f0f0f0;
+      padding: 10px 17px;
+      border-radius: 12px;
+      border-bottom-left-radius: 0px ;
+      flex-wrap: wrap;
+      width: fit-content;
+      font-family: sans-serif;
+      color: black;
+    }
+    .avatar{
+      min-width: 45px;
+      height: 45px;
+      img {
+        object-fit: cover;
+        height: 100%;
+        width: 100%;
+      }
+    }
   }
 
   .imageWrapper {

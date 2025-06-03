@@ -6,6 +6,7 @@ import styles from "./page.module.css";
 import Image from "next/image";
 
 import MyModal from "@/components/modal";
+import ModalAvatar from "@/components/modalAvatar";
 
 export default function Home() {
 
@@ -15,6 +16,7 @@ export default function Home() {
   const [typingDots, setTypingDots] = useState("");
   const [showImages, setShowImages] = useState(false);
   const [openModal, setOpenModal] = useState(false);
+  const [openModalAvatar, setOpenModalAvatar] = useState(false);
   const [imageIdx, setImageIdx] = useState(-1);
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -33,20 +35,41 @@ export default function Home() {
   }
 
   const messages = useMemo(() => [
-    "Hii! 👋 It's me Anya!",
+    "Hii! 👋 It's me Anya(赵安娅)!",
     `As of today I am ${getDaysOld(anyasDOB)} days old lol`,
     "Just wanted to give my big love and thanks to you folks for such a lovely gift!",
     // "...but most importantly, thank you!",
     "It's nice and cozy, and keeps me suuuper safe!",
-    "Here are some photos of me :)",
+    "Here are some photos of me 🤭🌸",
   ], []);
 
-  const images = [
-    '1.jpeg',
+  const thumbnails = [
+    '1.jpg',
     '2.jpg',
-    '3.JPG',
+    '3.jpg',
     '4.jpg',
-    '5.jpg'
+    '5.jpg',
+    '6.jpg',
+    '7.jpg',
+    '8.jpg',
+    '9.jpg',
+    '10.jpg',
+    '11.jpg',
+    '12.jpg',
+  ]
+  const largeImages = [
+    '1.jpg',
+    '2.jpg',
+    '3.jpg',
+    '4.jpg',
+    '5.jpg',
+    '6.jpg',
+    '7.jpg',
+    '8.jpg',
+    '9.jpg',
+    '10.jpg',
+    '11.jpg',
+    '12.jpg',
   ]
 
   useEffect(() => {
@@ -103,38 +126,61 @@ export default function Home() {
     setImageIdx(idx);
   }
 
+  const renderAvatar = () => {
+    return (
+      <a className={styles.avatar} onClick={() => setOpenModalAvatar(true)}>
+        <Image src={`/images/avatar/s-avatar.jpg`} width={30} height={30} alt='Photos of Anya' priority/>
+      </a>
+    )
+  }
+
   return (
     <div className={styles.el}>
-      <div className={styles.bubbleWrapper} ref={containerRef}>
-        {displayedMessages.map((msg, idx) => (
-          <div className={styles.bubble} key={idx}>
-            {msg}
-          </div>
-        ))}
-        {isTyping && (
-          <div className={styles.bubble}>
-            <p className={styles.typing}>Typing{typingDots}</p>
-          </div>
-        )}
-        {
-          showImages && 
-          images.map((img, idx) => {
-            return (
-              <a key={idx} className={styles.imageWrapper} onClick={()=>handleImgClick(idx)}>
-                <Image  src={`/images/${img}`} width={120} height={180} alt='Photos of Anya'  blurDataURL={`/images/${img}`} placeholder="blur"/>    
-              </a>
-            )
-          })
-          
-        }
-      </div>
+      <div className={styles.header}>
+          <p>Anya Zhao Gamboa</p>
+        </div>
+      
+      <div className={styles.body}>
+        
+        <div className={styles.bubbleWrapper} ref={containerRef}>
+          {displayedMessages.map((msg, idx) => (
+            <div className={styles.msgWrapper} key={idx}>
+              {renderAvatar()}
+              <div className={styles.bubble}>{msg}</div>
+            </div>
+          ))}
+          {isTyping && (
+            <div className={styles.msgWrapper}>
+              {renderAvatar()}
+              <div className={styles.bubble}>
+                <p className={styles.typing}>Typing{typingDots}</p>
+              </div>
+            </div>
+          )}
+          {
+            showImages && 
+            thumbnails.map((img, idx) => {
+              return (
+                <a key={idx} className={styles.imageWrapper} onClick={()=>handleImgClick(idx)}>
+                  <Image  src={`/images/thumb/${img}`} width={120} height={180} alt='Photos of Anya'/>    
+                </a>
+              )
+            })
+          }
+        </div>
 
-      <MyModal 
-        isOpen={openModal}
-        setOpenModal={setOpenModal}
-        imageIdx={imageIdx}
-        images={images}
-      />
+        <MyModal 
+          isOpen={openModal}
+          setOpenModal={setOpenModal}
+          imageIdx={imageIdx}
+          images={largeImages}
+        />
+
+        <ModalAvatar 
+          isOpen={openModalAvatar}
+          setOpenModalAvatar={setOpenModalAvatar}
+        />
+      </div>
     </div>
   );
 }
