@@ -72,6 +72,16 @@ export default function Home() {
     '12.jpg',
   ]
 
+  const [avatarLoaded, setAvatarLoaded] = useState(false);
+
+  useEffect(() => {
+    const img = new window.Image();
+    img.src = "/images/avatar/s-avatar.jpg";
+    img.onload = () => {
+      setAvatarLoaded(true);
+    };
+  }, []);
+
   useEffect(() => {
     if (!isTyping) return;
 
@@ -129,7 +139,7 @@ export default function Home() {
   const renderAvatar = () => {
     return (
       <a className={styles.avatar} onClick={() => setOpenModalAvatar(true)}>
-        <Image src={`/images/avatar/s-avatar.jpg`} width={30} height={30} alt='Photos of Anya' priority/>
+        <Image src={`/images/avatar/s-avatar.jpg`} width={30} height={30} alt='Photos of Anya' loading='eager' priority={true}/>
       </a>
     )
   }
@@ -141,15 +151,14 @@ export default function Home() {
         </div>
       
       <div className={styles.body}>
-        
         <div className={styles.bubbleWrapper} ref={containerRef}>
-          {displayedMessages.map((msg, idx) => (
+          {avatarLoaded && displayedMessages.map((msg, idx) => (
             <div className={styles.msgWrapper} key={idx}>
               {renderAvatar()}
               <div className={styles.bubble}>{msg}</div>
             </div>
           ))}
-          {isTyping && (
+          {avatarLoaded && isTyping && (
             <div className={styles.msgWrapper}>
               {renderAvatar()}
               <div className={styles.bubble}>
@@ -157,7 +166,7 @@ export default function Home() {
               </div>
             </div>
           )}
-          {
+          {avatarLoaded && 
             showImages && 
             thumbnails.map((img, idx) => {
               return (
