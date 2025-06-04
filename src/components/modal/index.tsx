@@ -36,7 +36,7 @@ const MyModal: React.FC<IModal> = ({
       
       <Swiper
         modules={[Zoom]}
-        slidesPerView={1.1}
+        slidesPerView={1.7}
         initialSlide={imageIdx}
         centeredSlides
         spaceBetween={12}
@@ -45,10 +45,10 @@ const MyModal: React.FC<IModal> = ({
           700: {
             slidesPerView: 2.8,
           },
-          // 1200: {
-          //   slidesPerView: 3.2,
-          //   spaceBetween: 30,
-          // },
+          1200: {
+            slidesPerView: 3.2,
+            spaceBetween: 30,
+          },
         }}
       >
         { images.map((img, idx) => {
