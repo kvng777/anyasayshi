@@ -33,15 +33,18 @@ const MyModal: React.FC<IModal> = ({
         // console.log('on req close click?')
       }}
     >
-      
+     <p className={style.caption}>Double tap to zoom in & out!</p> 
       <Swiper
         modules={[Zoom]}
-        slidesPerView={1.7}
+        slidesPerView={1.4}
         initialSlide={imageIdx}
         centeredSlides
         spaceBetween={12}
         zoom
         breakpoints={{
+          475: {
+            slidesPerView: 2.2,
+          },
           700: {
             slidesPerView: 2.8,
           },

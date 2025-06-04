@@ -65,5 +65,9 @@
         width: 100%;
       }
     }
+    .thumb {
+      max-height: 350px;
+      /* width: 50%; */
+    }
   }
 }

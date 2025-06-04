@@ -200,7 +200,7 @@ export default function Home() {
               return (
                 <div key={idx} className={styles.imageWrapper} >
                   {renderAvatar()}
-                  <a onClick={()=>handleImgClick(idx)}>
+                  <a className={styles.thumb} onClick={()=>handleImgClick(idx)}>
                     <Image  src={`/images/thumb/${img}`} width={120} height={180} alt='Photos of Anya'/>    
                   </a>
                 </div>
