@@ -11,6 +11,7 @@
   "dependencies": {
     "animejs": "^4.0.2",
     "framer-motion": "^12.15.0",
+    "git-extras": "^0.0.14",
     "gsap": "^3.13.0",
     "next": "15.3.2",
     "react": "^19.0.0",
