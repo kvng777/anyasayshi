@@ -1,17 +1,8 @@
 .el {
-  .header {
-    border-bottom: 1px solid darkgrey;
-    font-size: 20px;
-    text-align: center;
-    /* height: 50px; */
-    margin: auto 0;
-    padding: 12px 0;
-  }
-
+  background-color: #303134;
   .body {
     padding: 20px;
     max-width: 768px;
-    /* margin: 0 auto; */
   }
 
   .bubbleWrapper {

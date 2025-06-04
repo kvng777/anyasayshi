@@ -32,7 +32,7 @@ const ModalAvatar: React.FC<IModal> = ({ isOpen, setOpenModalAvatar }) => {
       >
         <SwiperSlide>
           <div className="swiper-zoom-container">
-            <Image className={style.image} src={`/images/avatar/l-avatar.jpg`} height={200} width={280} alt={'Photos of Anya'} quality={100}/>
+            <Image className={style.image} src={`/images/avatar/l-avatar.jpg`} height={300} width={380} alt={'Photos of Anya'} quality={100}/>
           </div>
         </SwiperSlide>
       </Swiper>

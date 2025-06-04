@@ -44,6 +44,9 @@ export default function Home() {
   ], []);
 
   const thumbnails = [
+    'a.jpg',
+    'b.jpg',
+    'c.jpg',
     '1.jpg',
     '2.jpg',
     '3.jpg',
@@ -58,6 +61,9 @@ export default function Home() {
     '12.jpg',
   ]
   const largeImages = [
+    'a.jpg',
+    'b.jpg',
+    'c.jpg',
     '1.jpg',
     '2.jpg',
     '3.jpg',
@@ -171,10 +177,6 @@ export default function Home() {
 
   return (
     <div className={styles.el}>
-      <div className={styles.header}>
-          <p>Anya Zhao Gamboa</p>
-        </div>
-      
       <div className={styles.body}>
         <div className={styles.bubbleWrapper} ref={containerRef}>
           {avatarLoaded && displayedMessages.map((msg, idx) => (
@@ -202,7 +204,6 @@ export default function Home() {
                     <Image  src={`/images/thumb/${img}`} width={120} height={180} alt='Photos of Anya'/>    
                   </a>
                 </div>
-                
               )
             })
           }

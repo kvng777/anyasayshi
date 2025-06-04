@@ -25,6 +25,11 @@
         margin-top: auto;
         margin-bottom: auto;
     }
+    :global(.swiper-slide-active) {
+        margin-top: auto;
+        margin-bottom: auto;
+        z-index: 9;
+    }
 
     &:global(.ReactModal__Content--after-open.container){
         display: flex;

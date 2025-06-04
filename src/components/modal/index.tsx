@@ -41,6 +41,15 @@ const MyModal: React.FC<IModal> = ({
         centeredSlides
         spaceBetween={12}
         zoom
+        breakpoints={{
+          700: {
+            slidesPerView: 2.8,
+          },
+          // 1200: {
+          //   slidesPerView: 3.2,
+          //   spaceBetween: 30,
+          // },
+        }}
       >
         { images.map((img, idx) => {
           return (
