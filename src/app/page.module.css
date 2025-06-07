@@ -1,7 +1,7 @@
 .el {
   background-color: #303134;
   .body {
-    padding: 20px;
+    padding: 12px;
     max-width: 768px;
   }
 
@@ -31,7 +31,11 @@
     }
     .avatar{
       min-width: 45px;
+      max-width: 45px;
+      min-height: 45px;
+      max-height: 45px;
       height: 45px;
+      width: 45px;
       img {
         object-fit: cover;
         height: 100%;
@@ -55,9 +59,13 @@
       border-bottom-left-radius: 0px;
     }
     .avatar{
-      /* border: 10px solid red; */
       min-width: 45px;
+      max-width: 45px;
+      width: 45px;
       height: 45px;
+      min-height: 45px;
+      max-height: 45px;
+      
       img {
         border-radius: unset;
         object-fit: cover;
