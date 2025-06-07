@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useRef, useMemo } from "react";
 import gsap from "gsap";
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 import Image from "next/image";
 
 import MyModal from "@/components/modal";
