@@ -170,7 +170,7 @@ export default function Home() {
   const renderAvatar = () => {
     return (
       <a className={styles.avatar} onClick={() => setOpenModalAvatar(true)}>
-        <Image src={`/images/avatar/s-avatar.jpg`} width={30} height={30} alt='Photos of Anya' loading='eager' priority={true}/>
+        <Image src={`/images/avatar/s-avatar.jpg`} width={45} height={45} alt='Photos of Anya' loading='eager' priority={true}/>
       </a>
     )
   }
