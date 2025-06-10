@@ -36,11 +36,11 @@ export default function Home() {
 
   const messages = useMemo(() => [
     "Hii! 👋 It's me Anya(赵安娅)!",
-    `As of today I am ${getDaysOld(anyasDOB)} days old lol`,
-    "Just wanted to give my big love and thanks to you folks for such a lovely gift!",
+    `As of today I am ${getDaysOld(anyasDOB)} days old 🥳`,
+    "Just wanted to give my big love and thanks to you folks for such a lovely gift!🥰🥰🥰",
     // "...but most importantly, thank you!",
-    "It's nice and cozy, and keeps me suuuper safe!",
-    "Here are some photos of me 🤭🌸",
+    "It's nice and cozy, and keeps me suuuuuuper safe!",
+    "Here are some photos of me 🤭",
   ], []);
 
   const thumbnails = [
