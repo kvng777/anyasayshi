@@ -27,26 +27,21 @@ export default function Home() {
   const getDaysOld = (dob: string | number | Date) => {
     const today = new Date();
     const birth = new Date(dob);
-    const diffTime = today.getTime() - birth.getTime();;
-    // console.log('diffTime', diffTime)
+    const diffTime = today.getTime() - birth.getTime();
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-
+  
     return diffDays;
   }
 
   const messages = useMemo(() => [
-    "Hii! 👋 It's me Anya(赵安娅)!",
-    `As of today I am ${getDaysOld(anyasDOB)} days old 🥳`,
-    "Just wanted to give my big love and thanks to you folks for such a lovely gift!🥰🥰🥰",
-    // "...but most importantly, thank you!",
-    "It's nice and cozy, and keeps me suuuuuuper safe!",
-    "Here are some photos of me 🤭",
+    "Hi! 👋 It's me, Anya(赵安娅)!",
+    `I was born on May 4th, and as of today, I'm ${getDaysOld(anyasDOB)} days old! 🥳`,
+    "I just wanted to send you a big squishy thank you for the lovely gift! 🥰💝",
+    "It's so nice and cozy — and it keeps me suuuuuuper safe!",
+    "Here are some photos of me 🤭📸",
   ], []);
 
   const thumbnails = [
-    'a.jpg',
-    'b.jpg',
-    'c.jpg',
     '1.jpg',
     '2.jpg',
     '3.jpg',
@@ -57,13 +52,8 @@ export default function Home() {
     '8.jpg',
     '9.jpg',
     '10.jpg',
-    '11.jpg',
-    '12.jpg',
   ]
   const largeImages = [
-    'a.jpg',
-    'b.jpg',
-    'c.jpg',
     '1.jpg',
     '2.jpg',
     '3.jpg',
@@ -74,8 +64,6 @@ export default function Home() {
     '8.jpg',
     '9.jpg',
     '10.jpg',
-    '11.jpg',
-    '12.jpg',
   ]
 
   const [avatarLoaded, setAvatarLoaded] = useState(false);
